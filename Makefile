@@ -14,11 +14,13 @@ DEBUG_OBJS := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/debug/%.o,$(SRCS))
 DEPS := $(OBJS:.o=.d)
 DEBUG_DEPS := $(DEBUG_OBJS:.o=.d)
 
-INC_DIRS := $(shell find $(SRC_DIR) -type d) $(LIB_DIR)/libft
+INC_DIRS := $(shell find $(SRC_DIR) -type d) $(wildcard $(LIB_DIR)/*/include)
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-LIB_NAMES := libft
-LIBS := $(foreach l,$(LIB_NAMES),lib/$(l)/$(l).a)
+LIBS := lib/ft_printf/libftprintf.a lib/libft/libft.a
+
+# LIB_NAMES := libft
+# LIBS := $(foreach l,$(LIB_NAMES),lib/$(l)/$(l).a)
 
 CFLAGS := -Wall -Wextra -Werror -Wpedantic -MMD -MP $(INC_FLAGS)
 LD_FLAGS := -fsanitize=address,undefined
@@ -48,6 +50,9 @@ $(OUT_DIR)/$(NAME): $(OBJS) $(LIBS)
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $< -o $@
+
+x:
+	@echo $(INC_DIRS)
 
 clean:
 	rm -rf $(BUILD_DIR)
