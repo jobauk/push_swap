@@ -13,8 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stddef.h>
-
 enum e_strategy
 {
 	STRAT_NONE = -1,
@@ -23,13 +21,5 @@ enum e_strategy
 	STRAT_COMPLEX,
 	STRAT_ADAPTIVE,
 };
-
-typedef struct s_stack
-{
-	int			*data;
-	size_t		len;
-	size_t		cap;
-}	t_stack;
-
 
 #endif
