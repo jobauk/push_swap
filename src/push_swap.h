@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/10/28 13:34:30 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/28 14:46:05 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ typedef struct s_stack
 	int			*data;
 	size_t		len;
 }	t_stack;
+
+int parse_args(enum e_strategy *strat, t_stack *stack, char *argv[], int argc);
+int	main(int argc, char *argv[]);
 
 #endif
