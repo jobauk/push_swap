@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Debug native binary",
+    "build": {
+      "command": "make target/libft",
+      "cwd": "${ZED_WORKTREE_ROOT}",
+    },
+    "program": "${ZED_WORKTREE_ROOT}/target/libft",
+    "request": "launch",
+    "adapter": "GDB",
+  },
+]
