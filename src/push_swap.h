@@ -28,6 +28,7 @@ typedef struct s_stack
 {
 	int			*data;
 	size_t		len;
+	size_t		cap;
 }	t_stack;
 
 
