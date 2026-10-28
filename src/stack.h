@@ -22,4 +22,6 @@ typedef struct s_stack
 	size_t		cap;
 }	t_stack;
 
+t_stack	stack_new(size_t init);
+
 #endif
