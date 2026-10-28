@@ -10,11 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
+# include "libft.h"
+# include <stddef.h>
 
-
+typedef struct s_stack
+{
+	int			*data;
+	size_t		len;
+}	t_stack;
 
 #endif
