@@ -6,11 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 17:30:55 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/28 17:40:06 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/28 17:54:34 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
 #include <stddef.h>
 #include <stdlib.h>
 

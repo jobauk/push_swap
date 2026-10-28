@@ -39,9 +39,6 @@ else
 	DEBUGGER := gdb
 endif
 
-flags:
-	@echo $(DEBUG_CFLAGS)
-
 all: $(BIN)
 
 run: $(BIN)
@@ -49,6 +46,9 @@ run: $(BIN)
 	
 debug: $(DEBUG_BIN)
 	$(DEBUGGER) $(DEBUG_BIN)
+
+norm:
+	@norminette $(SRCS)
 
 $(BIN): $(OBJS) $(LIBS)
 	mkdir -p $(dir $@)
