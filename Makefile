@@ -17,8 +17,8 @@ DEBUG_DEPS := $(DEBUG_OBJS:.o=.d)
 INC_DIRS := $(shell find $(SRC_DIR) -type d) $(LIB_DIR)/libft
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-LIB_NAMES := ft
-LIBS := $(foreach l,$(LIB_NAMES),lib/$(l)/lib$(l).a)
+LIB_NAMES := libft
+LIBS := $(foreach l,$(LIB_NAMES),lib/$(l)/$(l).a)
 
 CFLAGS := -Wall -Wextra -Werror -Wpedantic -MMD -MP $(INC_FLAGS)
 LD_FLAGS := -fsanitize=address,undefined
