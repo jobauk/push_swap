@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/28 16:02:30 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/10/28 16:05:49 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-enum e_strategy parse_flag(const char *flag)
+static enum e_strategy parse_flag(const char *flag)
 {
 	if (ft_strncmp(flag, "simple", ft_strlen(flag)) == 0)
 		return (STRAT_SIMPLE);
