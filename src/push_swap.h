@@ -6,21 +6,36 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/10/28 18:10:28 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/28 19:06:42 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-enum e_flag
+typedef enum e_flag
 {
-	FLAG_NONE = 1 << 0,
-	FLAG_SIMPLE = 1 << 1,
-	FLAG_MEDIUM = 1 << 2,
-	FLAG_COMPLEX = 1 << 3,
-	FLAG_ADAPTIVE = 1 << 4,
-	FLAG_BENCH = 1 << 5,
-};
+	FLAG_NONE,
+	FLAG_SIMPLE,
+	FLAG_MEDIUM,
+	FLAG_COMPLEX,
+	FLAG_ADAPTIVE,
+	FLAG_BENCH,
+}	t_flag;
+
+typedef enum e_strategy
+{
+	STRAT_NONE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX,
+	STRAT_ADAPTIVE,
+}
+
+typedef struct s_opts
+{
+	t_strategy	strat;
+	int			is_bench;
+}	t_opts;
 
 #endif
