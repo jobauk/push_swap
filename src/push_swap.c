@@ -6,10 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/27 23:47:40 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/28 13:00:51 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(void)
+int	main()
 {
+	
 }
