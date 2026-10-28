@@ -39,6 +39,9 @@ else
 	DEBUGGER := gdb
 endif
 
+flags:
+	@echo $(DEBUG_CFLAGS)
+
 all: $(BIN)
 
 run: $(BIN)
