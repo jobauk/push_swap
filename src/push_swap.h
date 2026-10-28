@@ -17,6 +17,7 @@
 
 enum e_strategy
 {
+	STRAT_NONE = -1,
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
 	STRAT_COMPLEX,
