@@ -1,2 +1,2 @@
 CompileFlags:
-  add: [-xc]
+  add: [-xc, -I./src, -I./lib/libft/include]
