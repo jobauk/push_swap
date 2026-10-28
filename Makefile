@@ -39,15 +39,29 @@ else
 	DEBUGGER := gdb
 endif
 
-all: $(OUT_DIR)/$(NAME)
+all: $(BIN)
 
-$(OUT_DIR)/$(NAME): $(OBJS) $(LIBS)
+run: $(BIN)
+	$(BIN)
+	
+debug: $(DEBUG_BIN)
+	$(DEBUGGER) $(DEBUG_BIN)
+
+$(BIN): $(OBJS) $(LIBS)
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS)
+
+$(DEBUG_BIN): $(DEBUG_OBJS) $(LIBS)
+	mkdir -p $(dir $@)
+	$(CC) $(DEBUG_CFLAGS) -o $@ $(DEBUG_OBJS) $(LIBS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/debug/%.o: $(SRC_DIR)/%.c
+	mkdir -p $(dir $@)
+	$(CC) $(DEBUG_CFLAGS) -c $< -o $@
 
 $(LIBS):
 	$(MAKE) -C $(dir $@)
