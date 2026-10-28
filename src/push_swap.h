@@ -15,6 +15,14 @@
 
 # include <stddef.h>
 
+enum e_strategy
+{
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX,
+	STRAT_ADAPTIVE,
+};
+
 typedef struct s_stack
 {
 	int			*data;
