@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 14:28:06 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/29 15:14:54 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/29 15:21:34 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,3 @@ void	stack_swap(t_stack *stack)
 	stack->data[stack->len - 1] = temp;
 }
 
-void	pusha(t_stack *a, t_stack *b)
-{
-	ft_printf("pa\n");
-	if (!b->len)
-		return ;
-	a->data[a->len++] = b->data[b->len--];
-}
