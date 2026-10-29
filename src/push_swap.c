@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/29 13:40:01 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/29 14:54:40 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	return (i);
 }
 
-static int	parse_args(t_opts *opts, t_stack *stack, char *argv[], int argc)
+int	parse_args(t_opts *opts, t_stack *stack, char *argv[], int argc)
 {
 	int	nflags;
 
@@ -63,11 +63,11 @@ static int	parse_args(t_opts *opts, t_stack *stack, char *argv[], int argc)
 	return (parse_stack(stack, argv + nflags, argc - nflags));
 }
 
-int	main(int argc, char *argv[])
-{
-	t_opts	opts;
-	t_stack	stack;
+// int	main(int argc, char *argv[])
+// {
+// 	t_opts	opts;
+// 	t_stack	stack;
 
-	(void)argc;
-	ft_printf("%d", parse_args(&opts, &stack, argv + 1, argc - 1));
-}
+// 	(void)argc;
+// 	ft_printf("%d", parse_args(&opts, &stack, argv + 1, argc - 1));
+// }
