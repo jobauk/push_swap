@@ -15,11 +15,11 @@
 
 typedef enum e_strategy
 {
-	STRAT_NONE,
-	STRAT_SIMPLE,
-	STRAT_MEDIUM,
-	STRAT_COMPLEX,
-	STRAT_ADAPTIVE,
+	S_NONE,
+	S_SIMPLE,
+	S_MEDIUM,
+	S_COMPLEX,
+	S_ADAPTIVE,
 }	t_strategy;
 
 typedef struct s_opts
