@@ -23,9 +23,7 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	stack_new(size_t init);
-void	stack_swap(t_stack *stack);
-void	stack_rotate(t_stack *stack);
-void	stack_reverse_rotate(t_stack *stack);
-void stack_push(t_stack *a, t_stack *b);
+
+void	stack_append(t_stack *stack, int n);
 
 #endif

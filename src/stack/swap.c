@@ -6,13 +6,21 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:24:12 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/10/30 14:49:42 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/10/30 15:47:41 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "stack.h"
-#include <stdlib.h>
+
+static void	stack_swap(t_stack *stack)
+{
+	int	temp;
+
+	temp = stack->data[stack->len];
+	stack->data[stack->len] = stack->data[stack->len - 1];
+	stack->data[stack->len - 1] = temp;
+}
 
 void	swapa(t_stack *a)
 {
