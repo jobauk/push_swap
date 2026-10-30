@@ -24,6 +24,8 @@ typedef struct s_stack
 
 t_stack	stack_new(size_t init);
 
+void	stack_free(t_stack *stack);
+
 void	stack_append(t_stack *stack, int n);
 
 #endif
