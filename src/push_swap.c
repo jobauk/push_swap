@@ -6,21 +6,35 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/29 14:54:40 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/10/30 16:18:12 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "stack.h"
 #include "libft.h"
-#include "ft_printf.h"
 
-static int	parse_stack(t_stack *stack, char *argv[], int argc)
+static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 {
-	(void)argv;
-	*stack = stack_new((size_t)argc);
-	if (!stack->data)
+	int i;
+	int status;
+
+	i = 0;
+	*a = stack_new((size_t)argc);
+	*b = stack_new((size_t)argc);
+	if (!a->data || !b->data)
 		return (-1);
+	while (i < argc)
+	{
+		stack_append(a, ft_strtoi(argv[i], &status));
+		if (status == -1)
+		{
+			stack_free(a);
+			stack_free(b);
+			return (-1);
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -53,21 +67,16 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	return (i);
 }
 
-int	parse_args(t_opts *opts, t_stack *stack, char *argv[], int argc)
+int	main(int argc, char *argv[])
 {
-	int	nflags;
+	int		nflags;
+	t_opts	opts;
+	t_stack	a;
+	t_stack	b;
 
-	nflags = parse_flags(opts, argv, argc);
-	if (nflags == -1 || opts->strat == S_NONE)
+	nflags = parse_flags(&opts, argv, argc);
+	if (nflags == -1 || opts.strat == S_NONE)
 		return (-1);
-	return (parse_stack(stack, argv + nflags, argc - nflags));
+	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
+		return (-1);
 }
-
-// int	main(int argc, char *argv[])
-// {
-// 	t_opts	opts;
-// 	t_stack	stack;
-
-// 	(void)argc;
-// 	ft_printf("%d", parse_args(&opts, &stack, argv + 1, argc - 1));
-// }
