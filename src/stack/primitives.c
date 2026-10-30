@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 14:28:06 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/29 16:00:12 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/10/30 14:49:55 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,12 @@ void	stack_reverse_rotate(t_stack *stack)
 	tmp = stack->data[stack->len];
 	ft_memmove(stack->data + stack->len, stack->data + stack->len - 1, stack->len - 1);
 	stack->data[0] = tmp;
+}
+
+void stack_push(t_stack *a, t_stack *b)
+{
+	if (!a->len)
+		return ;
+	if (b->len < b->cap)
+	b->data[b->len++] = a->data[a->len--];
 }
