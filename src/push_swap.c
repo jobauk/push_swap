@@ -6,13 +6,14 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/30 16:18:12 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/10/30 16:37:10 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "stack.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 {
@@ -45,7 +46,7 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	i = 0;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--", 2) == 0)
+		if (ft_strncmp(argv[i], "--", 2) != 0)
 			break ;
 		if (opts->strat == S_NONE)
 		{
@@ -74,9 +75,17 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
+	argv++;
+	argc--;
 	nflags = parse_flags(&opts, argv, argc);
 	if (nflags == -1 || opts.strat == S_NONE)
-		return (-1);
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
-		return (-1);
+	{
+		ft_printf("Error\n");
+		return (1);
+	}
 }
