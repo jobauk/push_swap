@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 17:10:19 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/07 00:43:48 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,8 @@ int	main(int argc, char *argv[])
 	t_stack	a;
 	t_stack	b;
 
-	argv++;
-	argc--;
-	nflags = parse_flags(&opts, argv, argc);
+	opts = (t_opts){0};
+	nflags = parse_flags(&opts, ++argv, --argc);
 	if (nflags == -1 || opts.strat == S_NONE)
 	{
 		ft_printf("Error: invalid flag\n");
