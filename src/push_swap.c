@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 14:16:14 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/06 17:10:19 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,6 @@ int	main(int argc, char *argv[])
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&a);
 	print_stack(&a);
+	stack_free(&a);
+	stack_free(&b);
 }
