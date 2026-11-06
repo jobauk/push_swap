@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 13:45:44 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/06 14:16:14 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,8 @@
 #include "stack.h"
 #include "libft.h"
 #include "ft_printf.h"
+#include "sort.h"
 
-static void sort(t_stack *a, char *argv[], int argc)
-{
-	int i;
-
-	i = 0;
-	while (i < argc)
-	{
-		if (argv[argc] > argv[argc - 1])
-			rotatea(a);
-	}
-}
 static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 {
 	int i;
@@ -79,6 +69,21 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	return (i);
 }
 
+void	print_stack(t_stack *stack)
+{
+	size_t	i;
+
+	i = 0;
+	ft_printf("[");
+	while (i < stack->len)
+	{
+		ft_printf("%d", stack_at(stack, i));
+		if (++i < stack->len)
+			ft_printf(", ");
+	}
+	ft_printf("]\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	int		nflags;
@@ -91,12 +96,16 @@ int	main(int argc, char *argv[])
 	nflags = parse_flags(&opts, argv, argc);
 	if (nflags == -1 || opts.strat == S_NONE)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error: invalid flag\n");
 		return (1);
 	}
 	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
 	{
-		ft_printf("Error\n");
+		ft_printf("Error: invalid sequence of numbers\n");
 		return (1);
 	}
+	print_stack(&a);
+	if (opts.strat == S_SIMPLE)
+		sort_simple(&a);
+	print_stack(&a);
 }
