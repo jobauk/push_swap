@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:25:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/06 13:58:03 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/06 23:39:56 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 static void	stack_reverse_rotate(t_stack *stack)
 {
-	if (stack->start == 0)
-		stack->start = stack->len;
+	if (stack->start == stack->len)
+		stack->start = 0;
 	else
-		stack->start--;
+		stack->start++;
 }
 
 void	reverse_rotatea(t_stack *a)
