@@ -45,6 +45,8 @@ run: $(BIN)
 	$(BIN)
 	
 debug: $(DEBUG_BIN)
+
+run-debug: $(DEBUG_BIN)
 	$(DEBUGGER) $(DEBUG_BIN)
 
 norm:
