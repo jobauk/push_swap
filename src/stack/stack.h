@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 17:44:30 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 13:55:06 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/06 14:44:45 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_stack
 t_stack	stack_new(size_t init);
 void	stack_free(t_stack *stack);
 void	stack_append(t_stack *stack, int n);
+int		stack_at(t_stack *stack, size_t idx);
+int		*stack_at_mut(t_stack *stack, size_t idx);
 
 // rotate
 void	rotatea(t_stack *a);

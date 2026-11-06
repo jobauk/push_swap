@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:24:12 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/10/30 15:47:41 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/06 14:53:26 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	stack_swap(t_stack *stack)
 {
 	int	temp;
 
-	temp = stack->data[stack->len];
-	stack->data[stack->len] = stack->data[stack->len - 1];
-	stack->data[stack->len - 1] = temp;
+	temp = stack_at(stack, stack->len - 1);
+	*stack_at_mut(stack, stack->len - 1) = stack_at(stack, stack->len - 2);
+	*stack_at_mut(stack, stack->len - 2) = temp;
 }
 
 void	swapa(t_stack *a)
