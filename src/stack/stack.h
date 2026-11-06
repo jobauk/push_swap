@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 17:44:30 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 13:49:32 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/06 13:55:06 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct s_stack
 {
 	int			*data;
+	size_t		start;
 	size_t		len;
 	size_t		cap;
 }	t_stack;

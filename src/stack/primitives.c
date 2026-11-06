@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 14:28:06 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/10/30 16:04:07 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/06 13:47:14 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ void	stack_free(t_stack *stack)
 	free(stack->data);
 }
 
+int		stack_at(t_stack *stack, size_t idx)
+{
+	return (stack->data[stack->start + idx % stack->len]);
+}
+
 void	stack_append(t_stack *stack, int n)
 {
-	stack->data[stack->len++] = n;
+	stack->data[stack-> start + stack->len % stack->len] = n;
+	stack->len++;
 }
