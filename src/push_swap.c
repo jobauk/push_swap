@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/07 00:43:48 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/09 16:57:25 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ int	main(int argc, char *argv[])
 		ft_printf("Error: invalid sequence of numbers\n");
 		return (1);
 	}
-	print_stack(&a);
+	// print_stack(&a);
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&a);
-	print_stack(&a);
+	// print_stack(&a);
 	stack_free(&a);
 	stack_free(&b);
 }

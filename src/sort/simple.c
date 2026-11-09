@@ -6,11 +6,13 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/06 13:54:35 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/07 00:38:54 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/09 16:52:55 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+
+void	print_stack(t_stack *stack);
 
 void	sort_simple(t_stack *a)
 {
@@ -23,12 +25,18 @@ void	sort_simple(t_stack *a)
 	while (i++ < a->len - 1)
 	{
 		j = 0;
+		
 		while (j++ < a->len - 1)
 		{
-			if (stack_at(a, a->len - 1) > stack_at(a, a->len - 2))
+			if (stack_at(a, 0) > stack_at(a, 1))
+			{
 				swapa(a);
-			rotatea(a);
+				// print_stack(a);
+			}
+			reverse_rotatea(a);
+			// print_stack(a);
 		}
-		rotatea(a);
+		reverse_rotatea(a);
+		// print_stack(a);
 	}
 }

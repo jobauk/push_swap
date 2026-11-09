@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:25:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/06 23:39:56 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/09 17:00:36 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 static void	stack_reverse_rotate(t_stack *stack)
 {
 	if (stack->start == stack->len)
-		stack->start = 0;
+		stack->start = 1;
 	else
 		stack->start++;
 }
 
 void	reverse_rotatea(t_stack *a)
 {
-	ft_printf("rra\n");
+	ft_printf("ra\n");
 	stack_reverse_rotate(a);
 }
 
 void	reverse_rotateb(t_stack *b)
 {
-	ft_printf("rrb\n");
+	ft_printf("rb\n");
 	stack_reverse_rotate(b);
 }
 
 void	reverse_rotate_all(t_stack *a, t_stack *b)
 {
-	ft_printf("rrr\n");
+	ft_printf("rr\n");
 	stack_reverse_rotate(a);
 	stack_reverse_rotate(b);
 }
