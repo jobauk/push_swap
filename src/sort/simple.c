@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/06 13:54:35 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/09 16:52:55 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/09 17:42:37 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,9 @@ void	sort_simple(t_stack *a)
 		while (j++ < a->len - 1)
 		{
 			if (stack_at(a, 0) > stack_at(a, 1))
-			{
 				swapa(a);
-				// print_stack(a);
-			}
 			reverse_rotatea(a);
-			// print_stack(a);
 		}
 		reverse_rotatea(a);
-		// print_stack(a);
 	}
 }
