@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/06 13:56:28 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/06 14:14:31 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/11 15:57:23 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 # include "stack.h"
 
 void sort_simple(t_stack *a);
+void sort_medium(t_stack *a, t_stack *b, int argc);
 
 #endif
