@@ -6,7 +6,13 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/11 15:24:35 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/11 15:28:01 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stack.h"
+
+void sort_medium(t_stack *a, t_stack *b)
+{
+	
+}
