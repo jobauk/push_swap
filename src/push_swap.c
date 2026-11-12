@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/11 15:27:10 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/11 15:56:54 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int argc, char *argv[])
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&a);
 	else if (opts.strat == S_MEDIUM)
-		sort_medium(&a);
+		sort_medium(&a, &b, argc);
 	stack_free(&a);
 	stack_free(&b);
 }

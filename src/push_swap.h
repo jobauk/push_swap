@@ -6,12 +6,14 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/10/30 16:05:34 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/12 14:07:12 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include "stack.h"
 
 typedef enum e_strategy
 {
@@ -29,5 +31,6 @@ typedef struct s_opts
 }	t_opts;
 
 int	ft_strtoi(const char *s, int *status);
+void	print_stack(t_stack *stack);
 
 #endif
