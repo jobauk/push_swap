@@ -6,14 +6,14 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:25:49 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/09 15:36:09 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/12 14:23:13 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "stack.h"
 
-static void	stack_rotate(t_stack *stack)
+void	stack_rotate(t_stack *stack)
 {
 	if (stack->cap)
 		stack->start = (stack->start - 1 + stack->cap) % stack->cap;

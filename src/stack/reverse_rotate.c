@@ -6,14 +6,14 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:25:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/09 17:00:36 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/12 14:23:07 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "stack.h"
 
-static void	stack_reverse_rotate(t_stack *stack)
+void	stack_reverse_rotate(t_stack *stack)
 {
 	if (stack->start == stack->len)
 		stack->start = 1;

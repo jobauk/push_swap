@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/12 14:11:50 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/12 14:24:19 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void sort_medium(t_stack *a, t_stack *b, int argc)
 	while (i < argc)
 	{
 		if (a->data[i] >= min && a->data[i] <= (min + range) - 1)
-			pusha(a, b);
+			pushb(a, b);
 		i++;
 	}
-	print_stack(b);
 	print_stack(a);
+	print_stack(b);
 	// min += range + 1;
 }
 
