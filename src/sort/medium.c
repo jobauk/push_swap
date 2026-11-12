@@ -6,11 +6,12 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/11 16:48:38 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/12 13:31:04 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
+#include <stdio.h>
 
 int ft_sqrt(int argc)
 {
@@ -25,31 +26,36 @@ int ft_sqrt(int argc)
     }
 	return (sqrt);
 }
-void range(t_stack *a)
+int ft_range(t_stack *a, int chunks)
 {
 	int max;
 	int min;
 	size_t i;
+	int range;
 
 	min = a->data[0];
-	max = 0;
+	max = a->data[0];
 	i = 1;
 	while (i != a->len)
 	{
-		if (a->data[i] > max && a->data[i] > min)
+		if (a->data[i] > max)
 			max = a->data[i];
 		else if (a->data[i] < min)
 			min = a->data[i];
 		i++;
 	}
+	range = ((max - min) + 1) / chunks;
+	return (range);
 }
 
 void sort_medium(t_stack *a, t_stack *b, int argc)
 {
 	int chunks;
 	int i;
+	int range;
 
 	chunks = ft_sqrt(argc);
 	i = 0;
+	range = ft_range(a, chunks);
 	
 }
