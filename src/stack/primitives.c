@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 14:28:06 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 14:50:56 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/13 16:19:47 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,18 @@ void	stack_free(t_stack *stack)
 	free(stack->data);
 }
 
-int		*stack_at_mut(t_stack *stack, size_t idx)
+int	*stack_at_mut(t_stack *stack, size_t idx)
 {
-	size_t	i;
-
-	i = idx;
-	if (stack->len)
-		i = (stack->start + idx) % stack->len;
-	return (stack->data + i);
+	return (stack->data + (stack->start + idx) % stack->cap);
 }
 
-int		stack_at(t_stack *stack, size_t idx)
+int	stack_at(t_stack *stack, size_t idx)
 {
 	return (*stack_at_mut(stack, idx));
 }
 
 void	stack_append(t_stack *stack, int n)
 {
-	stack->data[stack->len++] = n;
+	*stack_at_mut(stack, stack->len) = n;
+	stack->len++;
 }

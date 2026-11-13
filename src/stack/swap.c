@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:24:12 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/11 12:19:27 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/13 16:21:01 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	stack_swap(t_stack *stack)
 {
 	int	temp;
 
+	if (stack->len < 2)
+		return ;
 	temp = stack_at(stack, 0);
 	*stack_at_mut(stack, 0) = stack_at(stack, 1);
 	*stack_at_mut(stack, 1) = temp;

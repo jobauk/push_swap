@@ -6,32 +6,22 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:20:56 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/12 14:51:44 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/13 16:20:09 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "stack.h"
 
-void	stack_rotate(t_stack *stack);
-
-void	stack_reverse_rotate(t_stack *stack);
-
 static void	stack_push(t_stack *a, t_stack *b)
 {
-	// if (a->len)
-	// {
-	// 	*stack_at_mut(a, a->len - 1) = stack_at(b, 0);
-	// 	stack_rotate(a);
-	// 	stack_reverse_rotate(b);
-	// }
-	// else
-	// stack_rotate(a);
-	stack_rotate(a);
+	if (b->len == 0)
+		return ;
+	a->start = (a->start + a->cap - 1) % a->cap;
 	*stack_at_mut(a, 0) = stack_at(b, 0);
-	stack_reverse_rotate(b);
-	a->len++;
+	b->start = (b->start + 1) % b->cap;
 	b->len--;
+	a->len++;
 }
 
 void	pusha(t_stack *a, t_stack *b)
