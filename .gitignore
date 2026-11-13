@@ -4,5 +4,6 @@ build/
 **/*.a
 **/*.o
 **/*.d
+*.txt
 push_swap_visualizer/
 checker_linux
