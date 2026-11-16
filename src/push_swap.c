@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/11 15:56:54 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/16 14:04:38 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 {
-	int i;
-	int status;
+	int	i;
+	int	status;
 
 	i = 0;
 	*a = stack_new((size_t)argc);
@@ -107,6 +107,7 @@ int	main(int argc, char *argv[])
 		sort_simple(&a);
 	else if (opts.strat == S_MEDIUM)
 		sort_medium(&a, &b, argc);
+	print_stack(&a);
 	stack_free(&a);
 	stack_free(&b);
 }
