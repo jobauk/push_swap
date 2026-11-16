@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/16 14:04:38 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/16 17:45:30 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 				opts->strat = S_COMPLEX;
 			else if (ft_memcmp(argv[i] + 2, "adaptive", 9) == 0)
 				opts->strat = S_ADAPTIVE;
+			else
+				return (-1);
 		}
 		else if (ft_memcmp(argv[i] + 2, "bench", 6) == 0)
 			opts->is_bench = 1;
@@ -93,7 +95,7 @@ int	main(int argc, char *argv[])
 
 	opts = (t_opts){0};
 	nflags = parse_flags(&opts, ++argv, --argc);
-	if (nflags == -1 || opts.strat == S_NONE)
+	if (nflags == -1)
 	{
 		ft_printf("Error: invalid flag\n");
 		return (1);
@@ -103,11 +105,12 @@ int	main(int argc, char *argv[])
 		ft_printf("Error: invalid sequence of numbers\n");
 		return (1);
 	}
+	if (opts.strat == S_NONE)
+		opts.strat = S_ADAPTIVE;
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&a);
 	else if (opts.strat == S_MEDIUM)
-		sort_medium(&a, &b, argc);
-	print_stack(&a);
+		sort_medium(&a, &b);
 	stack_free(&a);
 	stack_free(&b);
 }
