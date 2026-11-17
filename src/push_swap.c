@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/16 18:20:05 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 16:43:41 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,31 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	return (i);
 }
 
+static double	compute_disorder(t_stack *stack)
+{
+	size_t	i;
+	size_t	j;
+	double	mistakes;
+	double	total;
+	
+	i = 0;
+	mistakes = 0;
+	total = 0;
+	while (i < stack->len - 1)
+	{
+		j = i + 1;
+		while (j < stack->len - 1)
+		{
+			total++;
+			if (stack_at(stack, i) > stack_at(stack, j))
+				mistakes++;
+			j++;
+		}
+		i++;
+	}
+	return (mistakes / total);
+}
+
 void	print_stack(t_stack *stack)
 {
 	size_t	i;
@@ -89,10 +114,12 @@ void	print_stack(t_stack *stack)
 int	main(int argc, char *argv[])
 {
 	int		nflags;
+	t_bench	bench;
 	t_opts	opts;
 	t_stack	a;
 	t_stack	b;
 
+	bench = (t_bench){0};
 	opts = (t_opts){0};
 	nflags = parse_flags(&opts, ++argv, --argc);
 	if (nflags == -1)
@@ -105,15 +132,20 @@ int	main(int argc, char *argv[])
 		ft_printf("Error: invalid sequence of numbers\n");
 		return (1);
 	}
+	bench.disorder = compute_disorder(&a);
+	bench.input_strat = opts.strat;
 	if (opts.strat == S_NONE)
 		opts.strat = S_ADAPTIVE;
 	if (opts.strat == S_SIMPLE)
-		sort_simple(&a);
+		sort_simple(&bench, &a);
 	else if (opts.strat == S_MEDIUM)
-		sort_medium(&a, &b);
+		sort_medium(&bench, &a, &b);
 	else if (opts.strat == S_COMPLEX)
-		sort_complex(&a, &b);
+		sort_complex(&bench, &a, &b);
+	bench.real_strat = opts.strat;
 	print_stack(&a);
+	if (opts.is_bench)
+		print_bench_results(&bench);
 	stack_free(&a);
 	stack_free(&b);
 }
