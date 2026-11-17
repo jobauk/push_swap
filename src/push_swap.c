@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/16 18:20:05 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 14:06:12 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	if (opts.strat == S_NONE)
-		opts.strat = S_ADAPTIVE;
+		opts.strat = S_MEDIUM;
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&a);
 	else if (opts.strat == S_MEDIUM)
