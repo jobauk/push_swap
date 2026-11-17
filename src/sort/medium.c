@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/16 17:36:34 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/17 15:29:03 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int ft_range(t_stack *a, int chunks, int *range)
 	return (min);
 }
 
-void sort_medium(t_stack *a, t_stack *b)
+void sort_medium(t_bench *bench, t_stack *a, t_stack *b)
 {
 	int chunks;
 	size_t i;
@@ -69,19 +69,19 @@ void sort_medium(t_stack *a, t_stack *b)
 		while (i < len)
 		{
 			if (stack_at(a, 0) >= min && stack_at(a, 0) <= min + range)
-				pushb(a, b);
+				bench->pb_ops += pushb(a, b);
 			else
-				rotatea(a);
+				bench->ra_ops += rotatea(a);
 			i++;
 		}
 		// print_stack(a);
 		// print_stack(b);
-		sort_simple(b);
+		sort_simple(bench, b);
 		len -= b->len;
 		while (b->len > 0)
 		{
-			pusha(a, b);
-			rotatea(a);
+			bench->pa_ops += pusha(a, b);
+			bench->ra_ops += rotatea(a);
 		}
 		// print_stack(a);
 		// print_stack(b);

@@ -6,11 +6,12 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/12 13:47:22 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/16 17:13:22 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 15:29:37 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "sort.h"
 #include "stack.h"
 
 void	print_stack(t_stack *stack);
@@ -35,8 +36,9 @@ static size_t	partition(t_stack *stack)
 	return (stack->len - 1);
 }
 
-void	sort_complex(t_stack *a, t_stack *b)
+void	sort_complex(t_bench *bench, t_stack *a, t_stack *b)
 {
+	(void)bench;
 	(void)b;
 	print_stack(a);
 	partition(a);
