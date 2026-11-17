@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/17 16:43:41 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 17:40:13 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int	main(int argc, char *argv[])
 	bench.disorder = compute_disorder(&a);
 	bench.input_strat = opts.strat;
 	if (opts.strat == S_NONE)
-		opts.strat = S_ADAPTIVE;
+		opts.strat = S_MEDIUM;
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&bench, &a);
 	else if (opts.strat == S_MEDIUM)
