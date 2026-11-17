@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/17 17:43:42 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/17 17:49:58 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int	ft_range(t_stack *a, int chunks, int *range)
 	return (min);
 }
 
-void	bubble_sort(t_stack *stack)
-{
-	size_t	i;
-	size_t	j;
+// void	bubble_sort(t_stack *stack)
+// {
+// 	size_t	i;
+// 	size_t	j;
 // static void	bubble_sort(t_stack *stack)
 // {
 // 	size_t	i;
