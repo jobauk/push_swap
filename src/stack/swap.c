@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:24:12 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/13 16:21:01 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 14:15:10 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,24 @@ static void	stack_swap(t_stack *stack)
 	*stack_at_mut(stack, 1) = temp;
 }
 
-void	swapa(t_stack *a)
+int	swapa(t_stack *a)
 {
 	ft_printf("sa\n");
 	stack_swap(a);
+	return (1);
 }
 
-void	swapb(t_stack *b)
+int	swapb(t_stack *b)
 {
 	ft_printf("sb\n");
 	stack_swap(b);
+	return (1);
 }
 
-void	swap_all(t_stack *a, t_stack *b)
+int	swap_all(t_stack *a, t_stack *b)
 {
 	ft_printf("ss\n");
 	stack_swap(a);
 	stack_swap(b);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 17:44:30 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/06 14:44:45 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/17 14:13:39 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ int		stack_at(t_stack *stack, size_t idx);
 int		*stack_at_mut(t_stack *stack, size_t idx);
 
 // rotate
-void	rotatea(t_stack *a);
-void	rotateb(t_stack *b);
-void	rotate_all(t_stack *a, t_stack *b);
+int		rotatea(t_stack *a);
+int		rotateb(t_stack *b);
+int		rotate_all(t_stack *a, t_stack *b);
 
 // reverse rotate
-void	reverse_rotatea(t_stack *a);
-void	reverse_rotateb(t_stack *b);
-void	reverse_rotate_all(t_stack *a, t_stack *b);
+int		reverse_rotatea(t_stack *a);
+int		reverse_rotateb(t_stack *b);
+int		reverse_rotate_all(t_stack *a, t_stack *b);
 
 // push
-void	pusha(t_stack *a, t_stack *b);
-void	pushb(t_stack *a, t_stack *b);
+int		pusha(t_stack *a, t_stack *b);
+int		pushb(t_stack *a, t_stack *b);
 
 // swap
-void	swapa(t_stack *a);
-void	swapb(t_stack *b);
-void	swap_all(t_stack *a, t_stack *b);
+int		swapa(t_stack *a);
+int		swapb(t_stack *b);
+int		swap_all(t_stack *a, t_stack *b);
 
 #endif

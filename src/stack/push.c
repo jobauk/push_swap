@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:20:56 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/13 16:20:09 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/17 14:14:08 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ static void	stack_push(t_stack *a, t_stack *b)
 	a->len++;
 }
 
-void	pusha(t_stack *a, t_stack *b)
+int	pusha(t_stack *a, t_stack *b)
 {
 	ft_printf("pa\n");
 	stack_push(a, b);
+	return (1);
 }
 
-void	pushb(t_stack *a, t_stack *b)
+int	pushb(t_stack *a, t_stack *b)
 {
 	ft_printf("pb\n");
 	stack_push(b, a);
+	return (1);
 }
