@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/17 14:12:48 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/17 23:31:58 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/18 01:11:33 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static size_t	chunk_max(t_stack *b, size_t chunk_size)
 	
 	i = 0;
 	max = 0;
-	while (i < chunk_size)
+	while (i < chunk_size && i < b->len)
 	{
 		if (stack_at(b, i) > stack_at(b, max))
 			max = i;
@@ -52,7 +52,7 @@ static void	push_chunk(t_stack *a, t_stack *b, size_t low, size_t size)
 	size_t	rank;
 
 	remaining = size;
-	while (remaining)
+	while (a->len && remaining)
 	{
 		rank = find_rank(a, b, stack_at(a, 0));
 		if (rank >= low && rank < low + size)
