@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/17 17:44:16 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/24 14:56:59 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,11 @@ int	main(int argc, char *argv[])
 	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
 	{
 		ft_printf("Error: invalid sequence of numbers\n");
+		return (1);
+	}
+	if (check_double(&a) == -1)
+	{
+		ft_printf("Error: duplicate values\n");
 		return (1);
 	}
 	bench.disorder = compute_disorder(&a);

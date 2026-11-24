@@ -5,149 +5,102 @@
 /*                                                     +:+                    */
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2026/11/11 15:24:34 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/17 17:49:58 by kivan-ei      ########   odam.nl         */
+/*   Created: 2026/11/17 14:12:48 by kivan-ei      #+#    #+#                 */
+/*   Updated: 2026/11/24 15:20:57 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 #include <stdio.h>
 
-int	ft_sqrt(size_t nmbr)
+static size_t	find_rank(t_stack *a, t_stack *b, int value)
 {
-    int		sqrt;
-    size_t	uneven;
+	size_t	i;
+	size_t	rank;
 
-	sqrt = 0;
-	uneven = 1;
-    while (nmbr >= uneven) 
-	{
-        nmbr = nmbr - uneven;
-        uneven = uneven + 2;
-        sqrt = sqrt + 1;
-    }
-	return (sqrt);
+	i = 0;
+	rank = 0;
+	while (i < a->len)
+		if (stack_at(a, i++) < value)
+			rank++;
+	i = 0;
+	while (i < b->len)
+		if (stack_at(b, i++) < value)
+			rank++;
+	return (rank);
 }
 
-int	ft_range(t_stack *a, int chunks, int *range)
+static size_t	chunk_max(t_stack *b, size_t chunk_size)
 {
-	int		max;
-	int		min;
 	size_t	i;
+	size_t	max;
 
-	min = a->data[0];
-	max = a->data[0];
-	i = 1;
-	while (i != a->len)
+	i = 0;
+	max = 0;
+	while (i < chunk_size && i < b->len)
 	{
-		if (stack_at(a, i) > max)
-			max = stack_at(a, i);
-		else if (stack_at(a, i) < min)
-			min = stack_at(a, i);
+		if (stack_at(b, i) > stack_at(b, max))
+			max = i;
 		i++;
 	}
-	*range = (max - min) / chunks;
-	return (min);
+	return (max);
 }
 
-// void	bubble_sort(t_stack *stack)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// static void	bubble_sort(t_stack *stack)
-// {
-// 	size_t	i;
-// 	size_t	j;
-
-// 	i = 0;
-// 	if (!stack->len)
-// 		return ;
-// 	while (i++ < stack->len - 1)
-// 	{
-// 		j = 0;
-// 		while (j++ < stack->len - 1)
-// 		{
-// 			if (stack_at(stack, 0) > stack_at(stack, 1))
-// 				swapb(stack);
-// 			rotateb(stack);
-// 		}
-// 		rotateb(stack);
-// 	}
-// }
-
-void	fill_b(t_stack *a, t_stack *b, int min, int max)
+static int	push_chunk(t_stack *a, t_stack *b, size_t low, size_t size)
 {
-	size_t	i;
-	size_t len;
-	
-	i = 0;
-	len = a->len;
-	while (i < len)
+	size_t	remaining;
+	size_t	rank;
+	int		op_count;
+
+	remaining = size;
+	op_count = 0;
+	while (a->len && remaining)
 	{
-		if (stack_at(a, 0) >= min && stack_at(a, 0) <= max)
-			pushb(a, b);
+		rank = find_rank(a, b, stack_at(a, 0));
+		if (rank >= low && rank < low + size)
+		{
+			op_count += pushb(a, b);
+			remaining--;
+		}
 		else
-			rotatea(a);
-		i++;
+			op_count += rotatea(a);
 	}
-	i = 0;
+	return (op_count);
 }
 
-// void sort_medium(t_bench *bench, t_stack *a, t_stack *b)
-// {
-// 	int		chunks;
-// 	int		range;
-// 	int		min;
-// 	int		num;
-// void	sort_medium(t_stack *a, t_stack *b)
-// {
-// 	int		chunks;
-// 	int		range;
-// 	int		min;
-// 	int		num;
+static int	pull_max(t_stack *a, t_stack *b, size_t size)
+{
+	size_t	i;
+	size_t	j;
+	int		op_count;
 	
-// 	chunks = ft_sqrt(a->len);
-// 	min = ft_range(a, chunks, &range);
-// 	num = 0;
-// 	while (num <= chunks)
-// 	{
-// 		while (i < len)
-// 		{
-// 			if (stack_at(a, 0) >= min && stack_at(a, 0) <= min + range)
-// 				bench->pb_ops += pushb(a, b);
-// 			else
-// 				bench->ra_ops += rotatea(a);
-// 			i++;
-// 		}
-// 		// print_stack(a);
-// 		// print_stack(b);
-// 		sort_simple(bench, b);
-// 		len -= b->len;
-// 		fill_b(a, b, min, min + range);
-// 		bubble_sort(b);
-// 		while (b->len > 0)
-// 		{
-// 			bench->pa_ops += pusha(a, b);
-// 			bench->ra_ops += rotatea(a);
-// 		}
-// 		num++;
-// 		min += (range + 1);
-// 	}
-// }
-// 	chunks = ft_sqrt(a->len);
-// 	min = ft_range(a, chunks, &range);
-// 	num = 0;
-// 	while (num <= chunks)
-// 	{
-// 		fill_b(a, b, min, min + range);
-// 		bubble_sort(b);
-// 		while (b->len > 0)
-// 		{
-// 			pusha(a, b);
-// 			rotatea(a);
-// 		}
-// 		num++;
-// 		min += (range + 1);
-// 	}
-// }
+	i = chunk_max(b, size);
+	j = i;
+	op_count = 0;
+	while (i--)
+		op_count += rotateb(b);
+	pusha(a, b);
+	while (j--)
+		op_count += reverse_rotateb(b);
+	return (op_count);
+}
 
+void	sort_medium(t_bench *bench, t_stack *a, t_stack *b)
+{
+	size_t	chunk_size;
+	size_t	low;
+
+	(void)bench;
+	chunk_size = 1;
+	while (chunk_size <= a->len / chunk_size)
+		chunk_size++;
+	chunk_size--;
+	low = 0;
+	while (a->len)
+	{
+		push_chunk(a, b, low, chunk_size);
+		low += chunk_size;
+	}
+	while (b->len)
+		pull_max(a, b, chunk_size);
+}

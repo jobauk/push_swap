@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/17 16:08:03 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/24 14:56:51 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ int		ft_strtoi(const char *s, int *status);
 void	print_stack(t_stack *stack);
 
 void	print_bench_results(t_bench *bench);
+
+int	check_double(t_stack *a);
 
 #endif
