@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/29 15:25:49 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/24 14:56:07 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/25 13:33:50 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	stack_rotate(t_stack *stack)
 		return (0);
 	*stack_at_mut(stack, stack->len) = stack_at(stack, 0);
 	stack->start = (stack->start + 1) % stack->cap;
-	return (0);
+	return (1);
 }
 
 int	rotatea(t_stack *a)
