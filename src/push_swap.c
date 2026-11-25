@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/25 14:03:14 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/25 14:13:18 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 #include "sort.h"
+#include <stdio.h>
 
 static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 {
@@ -101,14 +102,14 @@ void	print_stack(t_stack *stack)
 	size_t	i;
 
 	i = 0;
-	ft_printf("[");
+	fprintf(stderr, "[");
 	while (i < stack->len)
 	{
-		ft_printf("%d", stack_at(stack, i));
+		fprintf(stderr, "%d", stack_at(stack, i));
 		if (++i < stack->len)
-			ft_printf(", ");
+			fprintf(stderr, ", ");
 	}
-	ft_printf("]\n");
+	fprintf(stderr, "]\n");
 }
 
 int	main(int argc, char *argv[])
