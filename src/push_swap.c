@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/25 13:23:10 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/25 14:03:14 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,9 @@ int	main(int argc, char *argv[])
 	t_opts	opts;
 	t_stack	a;
 	t_stack	b;
+	t_context ctx;
 
+	ctx = (t_context){.a = &a, .b = &b, .bench = &bench};
 	bench = (t_bench){0};
 	opts = (t_opts){0};
 	nflags = parse_flags(&opts, ++argv, --argc);
@@ -140,11 +142,11 @@ int	main(int argc, char *argv[])
 	bench.disorder = compute_disorder(&a);
 	bench.input_strat = opts.strat;
 	if (opts.strat == S_NONE)
-		opts.strat = S_MEDIUM;
+		opts.strat = S_ADAPTIVE;
 	if (opts.strat == S_SIMPLE)
-		sort_simple(&bench, &a);
+		sort_simple(&ctx);
 	else if (opts.strat == S_MEDIUM)
-		sort_medium(&bench, &a, &b);
+		sort_medium(&ctx);
 	else if (opts.strat == S_COMPLEX)
 		sort_complex(&bench, &a, &b);
 	bench.real_strat = opts.strat;

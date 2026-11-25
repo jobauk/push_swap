@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/24 14:56:51 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/25 13:40:29 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ typedef struct s_opts
 	t_strategy	strat;
 	int			is_bench;
 }	t_opts;
+
+typedef struct s_context
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_bench *bench;
+}	t_context;
 
 int		ft_strtoi(const char *s, int *status);
 

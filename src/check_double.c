@@ -6,12 +6,11 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/19 15:49:01 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/25 13:14:44 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/25 13:31:30 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "ft_printf.h"
 
 int	check_double(t_stack *a)
 {
