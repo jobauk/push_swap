@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/28 12:59:43 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/25 13:40:29 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/26 15:47:37 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ void	print_stack(t_stack *stack);
 
 void	print_bench_results(t_bench *bench);
 
-int	check_double(t_stack *a);
+int		check_double(t_stack *a);
+
+int		parse_stack(t_stack *a, t_stack *b, char *argv[], int argc);
+int		parse_flags(t_opts *opts, char *argv[], int argc);
 
 #endif
