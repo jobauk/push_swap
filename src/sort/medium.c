@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/17 14:12:48 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/25 13:50:39 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/26 13:34:27 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,18 @@ static void	push_chunk(t_context *ctx, size_t low, size_t size)
 static void	pull_max(t_context *ctx, size_t size)
 {
 	size_t	i;
-	size_t	j;
 	
 	i = chunk_max(ctx, size);
-	j = i;
-	while (i--)
-		ctx->bench->rb_ops += rotateb(ctx->b);
-	pusha(ctx->a, ctx->b);
-	while (j--)
-		ctx->bench->rrb_ops += reverse_rotateb(ctx->b);
+	if (i <= size / 2)
+		while (i--)
+			ctx->bench->rb_ops += rotateb(ctx->b);
+	else
+	{
+		i = size - i;
+		while (i--)
+			ctx->bench->rrb_ops += reverse_rotateb(ctx->b);
+	}
+	ctx->bench->pa_ops += pusha(ctx->a, ctx->b);
 }
 
 void	sort_medium(t_context *ctx)
