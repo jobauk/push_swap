@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/25 21:26:49 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/26 13:44:30 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ static double	compute_disorder(t_stack *stack)
 	i = 0;
 	mistakes = 0;
 	total = 0;
-	while (i < stack->len - 1)
+	while (i < stack->len)
 	{
 		j = i + 1;
-		while (j < stack->len - 1)
+		while (j < stack->len)
 		{
 			total++;
 			if (stack_at(stack, i) > stack_at(stack, j))
@@ -143,7 +143,7 @@ int	main(int argc, char *argv[])
 	bench.disorder = compute_disorder(&a);
 	bench.input_strat = opts.strat;
 	if (opts.strat == S_NONE)
-		opts.strat = S_ADAPTIVE;
+		opts.strat = S_MEDIUM;
 	if (opts.strat == S_SIMPLE)
 		sort_simple(&ctx);
 	else if (opts.strat == S_MEDIUM)
