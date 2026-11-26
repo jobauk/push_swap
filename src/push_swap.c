@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/26 13:44:30 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/26 14:13:15 by kivan-ei      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ static int	parse_stack(t_stack *a, t_stack *b, char *argv[], int argc)
 	return (0);
 }
 
+int	parse_flag(t_opts *opts, char *args)
+{
+	if (ft_memcmp(args, "bench", 6) == 0)
+			opts->is_bench = 1;
+	if (opts->strat == S_NONE)
+	{
+		if (ft_memcmp(args, "simple", 7) == 0)
+			opts->strat = S_SIMPLE;
+		else if (ft_memcmp(args, "medium", 7) == 0)
+			opts->strat = S_MEDIUM;
+		else if (ft_memcmp(args, "complex", 8) == 0)
+			opts->strat = S_COMPLEX;
+		else if (ft_memcmp(args, "adaptive", 9) == 0)
+			opts->strat = S_ADAPTIVE;
+		else
+			return (-1);
+	}
+	return (0);
+}
+
 static int	parse_flags(t_opts *opts, char *argv[], int argc)
 {
 	int	i;
@@ -50,21 +70,9 @@ static int	parse_flags(t_opts *opts, char *argv[], int argc)
 	{
 		if (ft_strncmp(argv[i], "--", 2) != 0)
 			break ;
-		if (ft_memcmp(argv[i] + 2, "bench", 6) == 0)
-			opts->is_bench = 1;
-		else if (opts->strat == S_NONE)
-		{
-			if (ft_memcmp(argv[i] + 2, "simple", 7) == 0)
-				opts->strat = S_SIMPLE;
-			else if (ft_memcmp(argv[i] + 2, "medium", 7) == 0)
-				opts->strat = S_MEDIUM;
-			else if (ft_memcmp(argv[i] + 2, "complex", 8) == 0)
-				opts->strat = S_COMPLEX;
-			else if (ft_memcmp(argv[i] + 2, "adaptive", 9) == 0)
-				opts->strat = S_ADAPTIVE;
-			else
-				return (-1);
-		}
+		
+		if (parse_flag(opts, argv[i] + 2) == -1)
+			return (-1);
 		else
 			return (-1);
 		i++;
@@ -133,25 +141,31 @@ int	main(int argc, char *argv[])
 	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
 	{
 		ft_printf("Error: invalid sequence of numbers\n");
+		stack_free(&a);
+		stack_free(&b);
 		return (1);
 	}
 	if (check_double(&a) == -1)
 	{
 		ft_printf("Error: duplicate values\n");
+		stack_free(&a);
+		stack_free(&b);
 		return (1);
 	}
 	bench.disorder = compute_disorder(&a);
 	bench.input_strat = opts.strat;
-	if (opts.strat == S_NONE)
-		opts.strat = S_MEDIUM;
-	if (opts.strat == S_SIMPLE)
-		sort_simple(&ctx);
-	else if (opts.strat == S_MEDIUM)
-		sort_medium(&ctx);
-	else if (opts.strat == S_COMPLEX)
-		sort_complex(&ctx);
+	if (argc > 1 && bench.disorder > 0.0)
+	{
+		if (opts.strat == S_NONE)
+			opts.strat = S_ADAPTIVE;
+		else if (opts.strat == S_SIMPLE)
+			sort_simple(&ctx);
+		else if (opts.strat == S_MEDIUM)
+			sort_medium(&ctx);
+		else if (opts.strat == S_COMPLEX)
+			sort_complex(&ctx);
+	}
 	bench.real_strat = opts.strat;
-	print_stack(&a);
 	if (opts.is_bench)
 		print_bench_results(&bench);
 	stack_free(&a);
