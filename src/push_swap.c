@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/25 14:13:18 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/25 21:26:49 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int	main(int argc, char *argv[])
 	else if (opts.strat == S_MEDIUM)
 		sort_medium(&ctx);
 	else if (opts.strat == S_COMPLEX)
-		sort_complex(&bench, &a, &b);
+		sort_complex(&ctx);
 	bench.real_strat = opts.strat;
 	print_stack(&a);
 	if (opts.is_bench)
