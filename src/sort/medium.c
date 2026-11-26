@@ -6,7 +6,7 @@
 /*   By: kivan-ei <kivan-ei@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/17 14:12:48 by kivan-ei      #+#    #+#                 */
-/*   Updated: 2026/11/26 13:34:27 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/26 13:39:35 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,17 @@ static void	push_chunk(t_context *ctx, size_t low, size_t size)
 	}
 }
 
-static void	pull_max(t_context *ctx, size_t size)
+static void	pull_max(t_context *ctx)
 {
 	size_t	i;
 	
-	i = chunk_max(ctx, size);
-	if (i <= size / 2)
+	i = chunk_max(ctx, ctx->b->len);
+	if (i <= ctx->b->len / 2)
 		while (i--)
 			ctx->bench->rb_ops += rotateb(ctx->b);
 	else
 	{
-		i = size - i;
+		i = ctx->b->len - i;
 		while (i--)
 			ctx->bench->rrb_ops += reverse_rotateb(ctx->b);
 	}
@@ -98,5 +98,5 @@ void	sort_medium(t_context *ctx)
 		low += chunk_size;
 	}
 	while (ctx->b->len)
-		pull_max(ctx, chunk_size);
+		pull_max(ctx);
 }
