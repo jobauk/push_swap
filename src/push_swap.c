@@ -6,16 +6,16 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/10/27 23:26:42 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/26 15:52:31 by kivan-ei      ########   odam.nl         */
+/*   Updated: 2026/11/27 13:07:09 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "stack.h"
-#include "libft.h"
 #include "ft_printf.h"
 #include "sort.h"
 #include <stdio.h>
+#include <unistd.h>
 
 static double	compute_disorder(t_stack *stack)
 {
@@ -72,19 +72,19 @@ int	main(int argc, char *argv[])
 	nflags = parse_flags(&opts, ++argv, --argc);
 	if (nflags == -1)
 	{
-		ft_printf("Error: invalid flag\n");
+		write(STDERR_FILENO, "Error: invalid flag\n", 20);
 		return (1);
 	}
 	if (parse_stack(&a, &b, argv + nflags, argc - nflags) == -1)
 	{
-		ft_printf("Error: invalid sequence of numbers\n");
+		write(STDERR_FILENO, "Error: invalid sequence of numbers\n", 35);
 		stack_free(&a);
 		stack_free(&b);
 		return (1);
 	}
 	if (check_double(&a) == -1)
 	{
-		ft_printf("Error: duplicate values\n");
+		write(STDERR_FILENO, "Error: duplicate values\n", 24);
 		stack_free(&a);
 		stack_free(&b);
 		return (1);
